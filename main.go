@@ -387,62 +387,62 @@ func main() {
 	sort.Strings(platforms)
 
 	// ionic prepare
-	fmt.Println()
-	log.Infof("Building project")
+	// fmt.Println()
+	// log.Infof("Building project")
 	
-	if configs.Remove == "yes" {
-		// platform rm
-		for _, platform := range platforms {
-			cmdArgs := []string{"ionic"}
-			if ionicMajorVersion > 2 {
-				cmdArgs = append(cmdArgs, "cordova")
-			}
+	// if configs.Remove == "yes" {
+	// 	// platform rm
+	// 	for _, platform := range platforms {
+	// 		cmdArgs := []string{"ionic"}
+	// 		if ionicMajorVersion > 2 {
+	// 			cmdArgs = append(cmdArgs, "cordova")
+	// 		}
 
-			cmdArgs = append(cmdArgs, "platform", "rm")
+	// 		cmdArgs = append(cmdArgs, "platform", "rm")
 
-			cmdArgs = append(cmdArgs, platform)
+	// 		cmdArgs = append(cmdArgs, platform)
 
-			cmd := command.New(cmdArgs[0], cmdArgs[1:]...)
-			cmd.SetStdout(os.Stdout).SetStderr(os.Stderr).SetStdin(strings.NewReader("y"))
+	// 		cmd := command.New(cmdArgs[0], cmdArgs[1:]...)
+	// 		cmd.SetStdout(os.Stdout).SetStderr(os.Stderr).SetStdin(strings.NewReader("y"))
 
-			log.Donef("$ %s", cmd.PrintableCommandArgs())
+	// 		log.Donef("$ %s", cmd.PrintableCommandArgs())
 
-			if err := cmd.Run(); err != nil {
-				fail("command failed, error: %s", err)
-			}
-		}
-	}
+	// 		if err := cmd.Run(); err != nil {
+	// 			fail("command failed, error: %s", err)
+	// 		}
+	// 	}
+	// }
 
-	{
-		// platform add
-		for _, platform := range platforms {
-			cmdArgs := []string{"ionic"}
-			if ionicMajorVersion > 2 {
-				cmdArgs = append(cmdArgs, "cordova")
-			}
+	// {
+	// 	// platform add
+	// 	for _, platform := range platforms {
+	// 		cmdArgs := []string{"ionic"}
+	// 		if ionicMajorVersion > 2 {
+	// 			cmdArgs = append(cmdArgs, "cordova")
+	// 		}
 
-			cmdArgs = append(cmdArgs, "platform", "add")
+	// 		cmdArgs = append(cmdArgs, "platform", "add")
 
-			platformVersion := platform
-			pv := getField(configs, "Cordova"+strings.Title(platform)+"Version")
-			if pv == "master" {
-				platformVersion = "https://github.com/apache/cordova-" + platform + ".git"
-			} else if pv != "" {
-				platformVersion = platform + "@" + pv
-			}
+	// 		platformVersion := platform
+	// 		pv := getField(configs, "Cordova"+strings.Title(platform)+"Version")
+	// 		if pv == "master" {
+	// 			platformVersion = "https://github.com/apache/cordova-" + platform + ".git"
+	// 		} else if pv != "" {
+	// 			platformVersion = platform + "@" + pv
+	// 		}
 
-			cmdArgs = append(cmdArgs, platformVersion)
+	// 		cmdArgs = append(cmdArgs, platformVersion)
 
-			cmd := command.New(cmdArgs[0], cmdArgs[1:]...)
-			cmd.SetStdout(os.Stdout).SetStderr(os.Stderr).SetStdin(strings.NewReader("y"))
+	// 		cmd := command.New(cmdArgs[0], cmdArgs[1:]...)
+	// 		cmd.SetStdout(os.Stdout).SetStderr(os.Stderr).SetStdin(strings.NewReader("y"))
 
-			log.Donef("$ %s", cmd.PrintableCommandArgs())
+	// 		log.Donef("$ %s", cmd.PrintableCommandArgs())
 
-			if err := cmd.Run(); err != nil {
-				fail("command failed, error: %s", err)
-			}
-		}
-	}
+	// 		if err := cmd.Run(); err != nil {
+	// 			fail("command failed, error: %s", err)
+	// 		}
+	// 	}
+	// }
 
 	buildStart := time.Now()
 	{
