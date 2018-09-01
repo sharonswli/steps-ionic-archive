@@ -299,67 +299,67 @@ func main() {
 	}
 
 	// Update cordova and ionic version
-	if configs.CordovaVersion != "" {
-		fmt.Println()
-		log.Infof("Updating cordova version to: %s", configs.CordovaVersion)
+	// if configs.CordovaVersion != "" {
+	// 	fmt.Println()
+	// 	log.Infof("Updating cordova version to: %s", configs.CordovaVersion)
 
-		if err := npmRemove(false, "cordova"); err != nil {
-			fail("Failed to remove cordova, error: %s", err)
-		}
+	// 	if err := npmRemove(false, "cordova"); err != nil {
+	// 		fail("Failed to remove cordova, error: %s", err)
+	// 	}
 
-		if err := npmInstall(true, "cordova@"+configs.CordovaVersion); err != nil {
-			fail("Failed to install cordova, error: %s", err)
-		}
-	}
+	// 	if err := npmInstall(true, "cordova@"+configs.CordovaVersion); err != nil {
+	// 		fail("Failed to install cordova, error: %s", err)
+	// 	}
+	// }
 
-	if configs.IonicVersion != "" {
-		fmt.Println()
-		log.Infof("Updating ionic version to: %s", configs.IonicVersion)
+	// if configs.IonicVersion != "" {
+	// 	fmt.Println()
+	// 	log.Infof("Updating ionic version to: %s", configs.IonicVersion)
 
-		if err := npmRemove(false, "ionic"); err != nil {
-			fail("Failed to remove ionic, error: %s", err)
-		}
+	// 	if err := npmRemove(false, "ionic"); err != nil {
+	// 		fail("Failed to remove ionic, error: %s", err)
+	// 	}
 
-		if err := npmInstall(true, "ionic@"+configs.IonicVersion); err != nil {
-			fail("Failed to install ionic, error: %s", err)
-		}
+	// 	if err := npmInstall(true, "ionic@"+configs.IonicVersion); err != nil {
+	// 		fail("Failed to install ionic, error: %s", err)
+	// 	}
 
-		fmt.Println()
-		log.Infof("Installing local ionic cli")
-		if err := npmInstall(false, "ionic@"+configs.IonicVersion); err != nil {
-			fail("command failed, error: %s", err)
-		}
-	}
+	// 	fmt.Println()
+	// 	log.Infof("Installing local ionic cli")
+	// 	if err := npmInstall(false, "ionic@"+configs.IonicVersion); err != nil {
+	// 		fail("command failed, error: %s", err)
+	// 	}
+	// }
 
 	// Print cordova and ionic version
-	cordovaVer, err := cordovaVersion()
-	if err != nil {
-		fail("Failed to get cordova version, error: %s", err)
-	}
+	// cordovaVer, err := cordovaVersion()
+	// if err != nil {
+	// 	fail("Failed to get cordova version, error: %s", err)
+	// }
 
-	fmt.Println()
-	log.Printf("cordova version: %s", colorstring.Green(cordovaVer.String()))
+	// fmt.Println()
+	// log.Printf("cordova version: %s", colorstring.Green(cordovaVer.String()))
 
-	ionicVer, err := ionicVersion()
-	if err != nil {
-		fail("Failed to get ionic version, error: %s", err)
-	}
+	// ionicVer, err := ionicVersion()
+	// if err != nil {
+	// 	fail("Failed to get ionic version, error: %s", err)
+	// }
 
-	log.Printf("ionic version: %s", colorstring.Green(ionicVer.String()))
+	// log.Printf("ionic version: %s", colorstring.Green(ionicVer.String()))
 
 	// Ionic CLI plugins angular and cordova have been marked as deprecated for
 	// version 3.8.0 and above.
-	ionicVerConstraint, err := ver.NewConstraint("< 3.8.0")
-	if err != nil {
-		fail("Could not create version constraint for ionic: %s", err)
-	}
-	if ionicVerConstraint.Check(ionicVer) {
-		fmt.Println()
-		log.Infof("Installing cordova and angular plugins")
-		if err := npmInstall(false, "@ionic/cli-plugin-ionic-angular@latest", "@ionic/cli-plugin-cordova@latest"); err != nil {
-			fail("command failed, error: %s", err)
-		}
-	}
+	// ionicVerConstraint, err := ver.NewConstraint("< 3.8.0")
+	// if err != nil {
+	// 	fail("Could not create version constraint for ionic: %s", err)
+	// }
+	// if ionicVerConstraint.Check(ionicVer) {
+	// 	fmt.Println()
+	// 	log.Infof("Installing cordova and angular plugins")
+	// 	if err := npmInstall(false, "@ionic/cli-plugin-ionic-angular@latest", "@ionic/cli-plugin-cordova@latest"); err != nil {
+	// 		fail("command failed, error: %s", err)
+	// 	}
+	// }
 
 	//
 	// ionic login
