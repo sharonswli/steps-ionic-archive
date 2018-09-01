@@ -332,20 +332,20 @@ func main() {
 	// }
 
 	// Print cordova and ionic version
-	// cordovaVer, err := cordovaVersion()
-	// if err != nil {
-	// 	fail("Failed to get cordova version, error: %s", err)
-	// }
+	cordovaVer, err := cordovaVersion()
+	if err != nil {
+		fail("Failed to get cordova version, error: %s", err)
+	}
 
-	// fmt.Println()
-	// log.Printf("cordova version: %s", colorstring.Green(cordovaVer.String()))
+	fmt.Println()
+	log.Printf("cordova version: %s", colorstring.Green(cordovaVer.String()))
 
-	// ionicVer, err := ionicVersion()
-	// if err != nil {
-	// 	fail("Failed to get ionic version, error: %s", err)
-	// }
+	ionicVer, err := ionicVersion()
+	if err != nil {
+		fail("Failed to get ionic version, error: %s", err)
+	}
 
-	// log.Printf("ionic version: %s", colorstring.Green(ionicVer.String()))
+	log.Printf("ionic version: %s", colorstring.Green(ionicVer.String()))
 
 	// Ionic CLI plugins angular and cordova have been marked as deprecated for
 	// version 3.8.0 and above.
